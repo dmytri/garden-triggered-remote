@@ -8,6 +8,7 @@ exec:
       git branch -D bump
       && git checkout -b bump
       && git commit --allow-empty -m "Empty commit"
+      && git push origin -d bump
       && git push origin bump
       && git checkout main
 
