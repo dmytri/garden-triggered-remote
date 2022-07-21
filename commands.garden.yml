@@ -1,0 +1,20 @@
+kind: Command
+name: bump-project
+description:
+  short: create empty commit on project repo so we can trigger workflow on pull request
+exec:
+  command:
+    - git
+    - checkout
+    - -b
+    - bump
+    - &&
+    - git
+    - commit
+    - --allow-empty
+    - -m
+    - "Empty commit"
+    - &&
+    - git
+    - push
+
