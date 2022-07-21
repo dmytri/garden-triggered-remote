@@ -5,7 +5,8 @@ description:
 exec:
   command:
     - >-
-      git checkout bump
+      git branch -d bump
+      && git checkout -b bump
       && git commit --allow-empty -m "Empty commit"
       && git push origin bump
       && git checkout main
