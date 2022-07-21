@@ -2,23 +2,29 @@ kind: Command
 name: bump
 description:
   short: create empty commit on project repo so we can trigger workflow on pull request
+variables:
+  bump_branch: bump
 exec:
   command:
+    - /bin/sh
+    -  -c
     - >-
-      git branch -D bump
-      && git checkout -b bump
+      git branch -D ${var.bump_branch}
+      && git checkout -b ${var.bump_branch}
       && git commit --allow-empty -m "Empty commit"
-      && git push origin -d bump
-      && git push origin bump
+      && git push origin -d ${var.bump_branch}
+      && git push origin ${var.bump_branch}
       && git checkout main
 ---
 kind: Command
 name: bump-setup
 description:
-  short: create local and remote bump branches
+  short: create local and remote ${var.bump_branch} branches
 exec:
   command:
+    - /bin/sh
+    -  -c
     - >-
-      git checkout -b bump
-      && git push origin bump
+      git checkout -b ${var.bump_branch}
+      && git push origin ${var.bump_branch}
       && git checkout main
