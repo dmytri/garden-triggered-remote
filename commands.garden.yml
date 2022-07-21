@@ -11,4 +11,14 @@ exec:
       && git push origin -d bump
       && git push origin bump
       && git checkout main
-
+---
+kind: Command
+name: bump-setup
+description:
+  short: create local and remote bump branches
+exec:
+  command:
+    - >-
+      git checkout -b bump
+      && git push origin bump
+      && git checkout main
