@@ -9,7 +9,7 @@ exec:
     - /bin/sh
     -  -c
     - >-
-      git branch -D ${var.bump_branch}
+      && git branch -D ${var.bump_branch}
       && git checkout -b ${var.bump_branch}
       && git commit --allow-empty -m "Empty commit"
       && git push origin -d ${var.bump_branch}
@@ -19,7 +19,7 @@ exec:
 kind: Command
 name: bump-setup
 description:
-  short: create local and remote ${var.bump_branch} branches
+  short: create local and remote bump branches
 exec:
   command:
     - /bin/sh
